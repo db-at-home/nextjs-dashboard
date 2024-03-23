@@ -5,8 +5,8 @@ import {
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
-  User,
   Revenue,
+  User,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -41,10 +41,9 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
-    const latestInvoices = data.rows.map((invoice) => ({
-      ...invoice,
-      amount: formatCurrency(invoice.amount),
-    }));
+      const latestInvoices = data.rows.map((invoice) => ({
+        ...invoice,
+      amount: formatCurrency(invoice.amount), }));
     return latestInvoices;
   } catch (error) {
     console.error('Database Error:', error);
